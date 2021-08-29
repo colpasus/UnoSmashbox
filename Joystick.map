@@ -1,0 +1,1137 @@
+Archive member included to satisfy reference by file (symbol)
+
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+                              obj/HIDParser.o (__mulhi3)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+                              d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o (exit)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+                              obj/Joystick.o (__do_copy_data)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+                              obj/Joystick.o (__do_clear_bss)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+                              obj/HIDParser.o (memmove)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memcpy.o)
+                              d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o) (memcpy)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eerd_byte.o)
+                              obj/EndpointStream_AVR8.o (eeprom_read_byte)
+d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+                              obj/EndpointStream_AVR8.o (eeprom_update_byte)
+
+Discarded input sections
+
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ .text          0x0000000000000000        0x0 obj/Joystick.o
+ .text          0x0000000000000000        0x0 obj/Descriptors.o
+ .data          0x0000000000000000        0x0 obj/Descriptors.o
+ .bss           0x0000000000000000        0x0 obj/Descriptors.o
+ .text          0x0000000000000000        0x0 obj/HIDParser.o
+ .data          0x0000000000000000        0x0 obj/HIDParser.o
+ .bss           0x0000000000000000        0x0 obj/HIDParser.o
+ .text.USB_ProcessHIDReport
+                0x0000000000000000      0x6f8 obj/HIDParser.o
+ .text.USB_GetHIDReportItemInfo
+                0x0000000000000000       0xb6 obj/HIDParser.o
+ .text.USB_SetHIDReportItemInfo
+                0x0000000000000000       0xb8 obj/HIDParser.o
+ .text.USB_GetHIDReportSize
+                0x0000000000000000       0x66 obj/HIDParser.o
+ .debug_info    0x0000000000000000      0x8a7 obj/HIDParser.o
+ .debug_abbrev  0x0000000000000000      0x2a8 obj/HIDParser.o
+ .debug_loc     0x0000000000000000      0xbdb obj/HIDParser.o
+ .debug_aranges
+                0x0000000000000000       0x38 obj/HIDParser.o
+ .debug_ranges  0x0000000000000000       0xf8 obj/HIDParser.o
+ .debug_line    0x0000000000000000      0xdbe obj/HIDParser.o
+ .debug_str     0x0000000000000000      0x6f9 obj/HIDParser.o
+ .comment       0x0000000000000000       0x13 obj/HIDParser.o
+ .debug_frame   0x0000000000000000      0x10c obj/HIDParser.o
+ .text          0x0000000000000000        0x0 obj/Device_AVR8.o
+ .data          0x0000000000000000        0x0 obj/Device_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/Device_AVR8.o
+ .text.USB_Device_SendRemoteWakeup
+                0x0000000000000000       0x2c obj/Device_AVR8.o
+ .debug_info    0x0000000000000000       0xf5 obj/Device_AVR8.o
+ .debug_abbrev  0x0000000000000000       0x91 obj/Device_AVR8.o
+ .debug_aranges
+                0x0000000000000000       0x20 obj/Device_AVR8.o
+ .debug_ranges  0x0000000000000000       0x10 obj/Device_AVR8.o
+ .debug_line    0x0000000000000000      0x1b7 obj/Device_AVR8.o
+ .debug_str     0x0000000000000000      0x206 obj/Device_AVR8.o
+ .comment       0x0000000000000000       0x13 obj/Device_AVR8.o
+ .debug_frame   0x0000000000000000       0x24 obj/Device_AVR8.o
+ .text          0x0000000000000000        0x0 obj/EndpointStream_AVR8.o
+ .data          0x0000000000000000        0x0 obj/EndpointStream_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Discard_Stream
+                0x0000000000000000       0x7c obj/EndpointStream_AVR8.o
+ .text.Endpoint_Null_Stream
+                0x0000000000000000       0x7c obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_Stream_BE
+                0x0000000000000000       0xac obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_Stream_BE
+                0x0000000000000000       0xac obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_PStream_LE
+                0x0000000000000000       0xa4 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_PStream_BE
+                0x0000000000000000       0xae obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_EStream_LE
+                0x0000000000000000       0xa6 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_EStream_BE
+                0x0000000000000000       0xb0 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_EStream_LE
+                0x0000000000000000       0xa6 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_EStream_BE
+                0x0000000000000000       0xb0 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_Control_Stream_BE
+                0x0000000000000000       0xc0 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_Control_Stream_LE
+                0x0000000000000000       0x6a obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_Control_Stream_BE
+                0x0000000000000000       0x76 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_Control_PStream_BE
+                0x0000000000000000       0xc0 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_Control_EStream_LE
+                0x0000000000000000       0xd4 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Write_Control_EStream_BE
+                0x0000000000000000       0xde obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_Control_EStream_LE
+                0x0000000000000000       0x82 obj/EndpointStream_AVR8.o
+ .text.Endpoint_Read_Control_EStream_BE
+                0x0000000000000000       0x8a obj/EndpointStream_AVR8.o
+ .text          0x0000000000000000        0x0 obj/Endpoint_AVR8.o
+ .data          0x0000000000000000        0x0 obj/Endpoint_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/Endpoint_AVR8.o
+ .text.Endpoint_ConfigureEndpointTable
+                0x0000000000000000       0x7c obj/Endpoint_AVR8.o
+ .text.Endpoint_ClearEndpoints
+                0x0000000000000000       0x28 obj/Endpoint_AVR8.o
+ .text          0x0000000000000000        0x0 obj/Host_AVR8.o
+ .data          0x0000000000000000        0x0 obj/Host_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/Host_AVR8.o
+ .debug_info    0x0000000000000000       0x56 obj/Host_AVR8.o
+ .debug_abbrev  0x0000000000000000       0x26 obj/Host_AVR8.o
+ .debug_aranges
+                0x0000000000000000       0x18 obj/Host_AVR8.o
+ .debug_line    0x0000000000000000       0x1d obj/Host_AVR8.o
+ .debug_str     0x0000000000000000      0x1ae obj/Host_AVR8.o
+ .comment       0x0000000000000000       0x13 obj/Host_AVR8.o
+ .text          0x0000000000000000        0x0 obj/PipeStream_AVR8.o
+ .data          0x0000000000000000        0x0 obj/PipeStream_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/PipeStream_AVR8.o
+ .debug_info    0x0000000000000000       0x56 obj/PipeStream_AVR8.o
+ .debug_abbrev  0x0000000000000000       0x26 obj/PipeStream_AVR8.o
+ .debug_aranges
+                0x0000000000000000       0x18 obj/PipeStream_AVR8.o
+ .debug_line    0x0000000000000000       0x1d obj/PipeStream_AVR8.o
+ .debug_str     0x0000000000000000      0x1b4 obj/PipeStream_AVR8.o
+ .comment       0x0000000000000000       0x13 obj/PipeStream_AVR8.o
+ .text          0x0000000000000000        0x0 obj/Pipe_AVR8.o
+ .data          0x0000000000000000        0x0 obj/Pipe_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/Pipe_AVR8.o
+ .debug_info    0x0000000000000000       0x56 obj/Pipe_AVR8.o
+ .debug_abbrev  0x0000000000000000       0x26 obj/Pipe_AVR8.o
+ .debug_aranges
+                0x0000000000000000       0x18 obj/Pipe_AVR8.o
+ .debug_line    0x0000000000000000       0x1d obj/Pipe_AVR8.o
+ .debug_str     0x0000000000000000      0x1ae obj/Pipe_AVR8.o
+ .comment       0x0000000000000000       0x13 obj/Pipe_AVR8.o
+ .text          0x0000000000000000        0x0 obj/USBController_AVR8.o
+ .data          0x0000000000000000        0x0 obj/USBController_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/USBController_AVR8.o
+ .text.USB_Disable
+                0x0000000000000000       0x2e obj/USBController_AVR8.o
+ .text          0x0000000000000000        0x0 obj/USBInterrupt_AVR8.o
+ .data          0x0000000000000000        0x0 obj/USBInterrupt_AVR8.o
+ .bss           0x0000000000000000        0x0 obj/USBInterrupt_AVR8.o
+ .text          0x0000000000000000        0x0 obj/ConfigDescriptors.o
+ .data          0x0000000000000000        0x0 obj/ConfigDescriptors.o
+ .bss           0x0000000000000000        0x0 obj/ConfigDescriptors.o
+ .text.USB_GetNextDescriptorOfType
+                0x0000000000000000       0x4c obj/ConfigDescriptors.o
+ .text.USB_GetNextDescriptorOfTypeBefore
+                0x0000000000000000       0x54 obj/ConfigDescriptors.o
+ .text.USB_GetNextDescriptorOfTypeAfter
+                0x0000000000000000       0x3e obj/ConfigDescriptors.o
+ .text.USB_GetNextDescriptorComp
+                0x0000000000000000       0x84 obj/ConfigDescriptors.o
+ .debug_info    0x0000000000000000      0x463 obj/ConfigDescriptors.o
+ .debug_abbrev  0x0000000000000000      0x1d5 obj/ConfigDescriptors.o
+ .debug_loc     0x0000000000000000      0x565 obj/ConfigDescriptors.o
+ .debug_aranges
+                0x0000000000000000       0x38 obj/ConfigDescriptors.o
+ .debug_ranges  0x0000000000000000       0x28 obj/ConfigDescriptors.o
+ .debug_line    0x0000000000000000      0x418 obj/ConfigDescriptors.o
+ .debug_str     0x0000000000000000      0x3f4 obj/ConfigDescriptors.o
+ .comment       0x0000000000000000       0x13 obj/ConfigDescriptors.o
+ .debug_frame   0x0000000000000000       0xbc obj/ConfigDescriptors.o
+ .text          0x0000000000000000        0x0 obj/DeviceStandardReq.o
+ .data          0x0000000000000000        0x0 obj/DeviceStandardReq.o
+ .text          0x0000000000000000        0x0 obj/Events.o
+ .data          0x0000000000000000        0x0 obj/Events.o
+ .bss           0x0000000000000000        0x0 obj/Events.o
+ .text.USB_Event_Stub_2
+                0x0000000000000000        0x2 obj/Events.o
+ .text.USB_Event_Stub_3
+                0x0000000000000000        0x2 obj/Events.o
+ .text          0x0000000000000000        0x0 obj/HostStandardReq.o
+ .data          0x0000000000000000        0x0 obj/HostStandardReq.o
+ .bss           0x0000000000000000        0x0 obj/HostStandardReq.o
+ .debug_info    0x0000000000000000       0x56 obj/HostStandardReq.o
+ .debug_abbrev  0x0000000000000000       0x26 obj/HostStandardReq.o
+ .debug_aranges
+                0x0000000000000000       0x18 obj/HostStandardReq.o
+ .debug_line    0x0000000000000000       0x1d obj/HostStandardReq.o
+ .debug_str     0x0000000000000000      0x1af obj/HostStandardReq.o
+ .comment       0x0000000000000000       0x13 obj/HostStandardReq.o
+ .text          0x0000000000000000        0x0 obj/USBTask.o
+ .data          0x0000000000000000        0x0 obj/USBTask.o
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc.mul
+                0x0000000000000000       0x22 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .debug_line    0x0000000000000000       0xab d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .debug_line_str
+                0x0000000000000000       0x54 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .debug_info    0x0000000000000000       0x24 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .debug_abbrev  0x0000000000000000       0x14 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .debug_str     0x0000000000000000       0x44 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+ .text.avr-libc
+                0x0000000000000000       0x24 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memcpy.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memcpy.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memcpy.o)
+ .text.avr-libc
+                0x0000000000000000       0x12 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memcpy.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eerd_byte.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eerd_byte.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eerd_byte.o)
+ .text.avr-libc
+                0x0000000000000000       0x10 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eerd_byte.o)
+ .text          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+ .data          0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+ .bss           0x0000000000000000        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+ .text.avr-libc
+                0x0000000000000000       0x24 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000010000 xr
+data             0x0000000000800060 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+fuse             0x0000000000820000 0x0000000000000003 rw !x
+lock             0x0000000000830000 0x0000000000000400 rw !x
+signature        0x0000000000840000 0x0000000000000400 rw !x
+user_signatures  0x0000000000850000 0x0000000000000400 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+LOAD obj/Joystick.o
+LOAD obj/Descriptors.o
+LOAD obj/HIDParser.o
+LOAD obj/Device_AVR8.o
+LOAD obj/EndpointStream_AVR8.o
+LOAD obj/Endpoint_AVR8.o
+LOAD obj/Host_AVR8.o
+LOAD obj/PipeStream_AVR8.o
+LOAD obj/Pipe_AVR8.o
+LOAD obj/USBController_AVR8.o
+LOAD obj/USBInterrupt_AVR8.o
+LOAD obj/ConfigDescriptors.o
+LOAD obj/DeviceStandardReq.o
+LOAD obj/Events.o
+LOAD obj/HostStandardReq.o
+LOAD obj/USBTask.o
+LOAD d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libm.a
+START GROUP
+LOAD d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a
+LOAD d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libm.a
+LOAD d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a
+LOAD d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a
+END GROUP
+                0x0000000000010000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x10000
+                0x000000000000ffa0                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
+                0x0000000000010000                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                [0x0000000000000003]                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x0000000000000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x0000000000000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x0000000000000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000      0xfce
+ *(.vectors)
+ .vectors       0x0000000000000000       0x74 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+                0x0000000000000000                __vector_default
+                0x0000000000000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x0000000000000074                . = ALIGN (0x2)
+                0x0000000000000074                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000000000000074        0x0 linker stubs
+ *(.trampolines*)
+                0x0000000000000074                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+ *(.progmem.*)
+ .progmem.data  0x0000000000000074       0xe3 obj/Descriptors.o
+                0x0000000000000074                ProductString
+                0x00000000000000a4                ManufacturerString
+                0x00000000000000c2                LanguageString
+                0x00000000000000c6                ConfigurationDescriptor
+                0x00000000000000ef                DeviceDescriptor
+                0x0000000000000101                JoystickReport
+                0x0000000000000158                . = ALIGN (0x2)
+ *fill*         0x0000000000000157        0x1 
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000000000000158                __ctors_start = .
+ *(.ctors)
+                0x0000000000000158                __ctors_end = .
+                0x0000000000000158                __dtors_start = .
+ *(.dtors)
+                0x0000000000000158                __dtors_end = .
+ SORT_BY_NAME(*)(.ctors)
+ SORT_BY_NAME(*)(.dtors)
+ *(.init0)
+ .init0         0x0000000000000158        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+                0x0000000000000158                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000000000000158        0xc d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000000000000164       0x16 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+                0x0000000000000164                __do_copy_data
+ .init4         0x000000000000017a       0x10 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+                0x000000000000017a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000000000018a        0x4 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ *(.init9)
+ *(.text)
+ .text          0x000000000000018e        0x2 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+                0x000000000000018e                __vector_22
+                0x000000000000018e                __vector_28
+                0x000000000000018e                __vector_1
+                0x000000000000018e                __vector_24
+                0x000000000000018e                __vector_12
+                0x000000000000018e                __bad_interrupt
+                0x000000000000018e                __vector_6
+                0x000000000000018e                __vector_3
+                0x000000000000018e                __vector_23
+                0x000000000000018e                __vector_25
+                0x000000000000018e                __vector_13
+                0x000000000000018e                __vector_17
+                0x000000000000018e                __vector_19
+                0x000000000000018e                __vector_7
+                0x000000000000018e                __vector_27
+                0x000000000000018e                __vector_5
+                0x000000000000018e                __vector_4
+                0x000000000000018e                __vector_9
+                0x000000000000018e                __vector_2
+                0x000000000000018e                __vector_21
+                0x000000000000018e                __vector_15
+                0x000000000000018e                __vector_8
+                0x000000000000018e                __vector_26
+                0x000000000000018e                __vector_14
+                0x000000000000018e                __vector_10
+                0x000000000000018e                __vector_16
+                0x000000000000018e                __vector_18
+                0x000000000000018e                __vector_20
+                0x0000000000000190                . = ALIGN (0x2)
+ *(.text.*)
+ .text.USART_Init
+                0x0000000000000190       0x16 obj/Joystick.o
+                0x0000000000000190                USART_Init
+ .text.SetupHardware
+                0x00000000000001a6       0x30 obj/Joystick.o
+                0x00000000000001a6                SetupHardware
+ .text.EVENT_USB_Device_Connect
+                0x00000000000001d6        0x2 obj/Joystick.o
+                0x00000000000001d6                EVENT_USB_Device_Connect
+ .text.EVENT_USB_Device_Disconnect
+                0x00000000000001d8        0x2 obj/Joystick.o
+                0x00000000000001d8                EVENT_USB_Device_Disconnect
+ .text.EVENT_USB_Device_ConfigurationChanged
+                0x00000000000001da       0x10 obj/Joystick.o
+                0x00000000000001da                EVENT_USB_Device_ConfigurationChanged
+ .text.EVENT_USB_Device_ControlRequest
+                0x00000000000001ea        0x2 obj/Joystick.o
+                0x00000000000001ea                EVENT_USB_Device_ControlRequest
+ .text.serialRead
+                0x00000000000001ec       0x26 obj/Joystick.o
+                0x00000000000001ec                serialRead
+ .text.serialWrite
+                0x0000000000000212        0xe obj/Joystick.o
+                0x0000000000000212                serialWrite
+ .text.flushSerialRead
+                0x0000000000000220        0xe obj/Joystick.o
+                0x0000000000000220                flushSerialRead
+ .text.LEDon    0x000000000000022e       0x22 obj/Joystick.o
+                0x000000000000022e                LEDon
+ .text.LEDoff   0x0000000000000250       0x24 obj/Joystick.o
+                0x0000000000000250                LEDoff
+ .text.GenerateReport
+                0x0000000000000274      0x24e obj/Joystick.o
+                0x0000000000000274                GenerateReport
+ .text.My_HID_Task
+                0x00000000000004c2      0x1a0 obj/Joystick.o
+                0x00000000000004c2                My_HID_Task
+ .text.startup.main
+                0x0000000000000662       0x82 obj/Joystick.o
+                0x0000000000000662                main
+ .text.CALLBACK_USB_GetDescriptor
+                0x00000000000006e4       0x82 obj/Descriptors.o
+                0x00000000000006e4                CALLBACK_USB_GetDescriptor
+ .text.Endpoint_Write_Stream_LE
+                0x0000000000000766       0x9c obj/EndpointStream_AVR8.o
+                0x0000000000000766                Endpoint_Write_Stream_LE
+ .text.Endpoint_Read_Stream_LE
+                0x0000000000000802       0x9c obj/EndpointStream_AVR8.o
+                0x0000000000000802                Endpoint_Read_Stream_LE
+ .text.Endpoint_Write_Control_Stream_LE
+                0x000000000000089e       0xb2 obj/EndpointStream_AVR8.o
+                0x000000000000089e                Endpoint_Write_Control_Stream_LE
+ .text.Endpoint_Write_Control_PStream_LE
+                0x0000000000000950       0xb4 obj/EndpointStream_AVR8.o
+                0x0000000000000950                Endpoint_Write_Control_PStream_LE
+ .text.Endpoint_ConfigureEndpoint_Prv
+                0x0000000000000a04       0x68 obj/Endpoint_AVR8.o
+                0x0000000000000a04                Endpoint_ConfigureEndpoint_Prv
+ .text.Endpoint_ClearStatusStage
+                0x0000000000000a6c       0x3e obj/Endpoint_AVR8.o
+                0x0000000000000a6c                Endpoint_ClearStatusStage
+ .text.Endpoint_WaitUntilReady
+                0x0000000000000aaa       0x62 obj/Endpoint_AVR8.o
+                0x0000000000000aaa                Endpoint_WaitUntilReady
+ .text.USB_ResetInterface
+                0x0000000000000b0c       0x72 obj/USBController_AVR8.o
+                0x0000000000000b0c                USB_ResetInterface
+ .text.USB_Init
+                0x0000000000000b7e       0x12 obj/USBController_AVR8.o
+                0x0000000000000b7e                USB_Init
+ .text.USB_INT_DisableAllInterrupts
+                0x0000000000000b90        0x6 obj/USBInterrupt_AVR8.o
+                0x0000000000000b90                USB_INT_DisableAllInterrupts
+ .text.USB_INT_ClearAllInterrupts
+                0x0000000000000b96        0x6 obj/USBInterrupt_AVR8.o
+                0x0000000000000b96                USB_INT_ClearAllInterrupts
+ .text.__vector_11
+                0x0000000000000b9c      0x148 obj/USBInterrupt_AVR8.o
+                0x0000000000000b9c                __vector_11
+ .text.USB_Device_ProcessControlRequest
+                0x0000000000000ce4      0x2b2 obj/DeviceStandardReq.o
+                0x0000000000000ce4                USB_Device_ProcessControlRequest
+ .text.USB_Event_Stub
+                0x0000000000000f96        0x2 obj/Events.o
+                0x0000000000000f96                USB_Event_Stub
+                0x0000000000000f96                EVENT_USB_Device_Suspend
+                0x0000000000000f96                EVENT_USB_Device_StartOfFrame
+                0x0000000000000f96                EVENT_USB_Device_Reset
+                0x0000000000000f96                EVENT_USB_Device_WakeUp
+ .text.USB_USBTask
+                0x0000000000000f98       0x32 obj/USBTask.o
+                0x0000000000000f98                USB_USBTask
+                0x0000000000000fca                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000000000000fca        0x0 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+                0x0000000000000fca                _exit
+                0x0000000000000fca                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000000000000fca        0x4 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ *(.fini0)
+ *(.hightext)
+ *(.hightext*)
+ *(.progmemx.*)
+                0x0000000000000fce                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+                0x0000000000000fce                _etext = .
+
+.data           0x0000000000800100        0x2 load address 0x0000000000000fce
+                0x0000000000800100                PROVIDE (__data_start = .)
+ *(.data)
+ .data          0x0000000000800100        0x1 obj/Joystick.o
+                0x0000000000800100                state
+ *(.data*)
+ *(.gnu.linkonce.d*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.r*)
+                0x0000000000800102                . = ALIGN (0x2)
+ *fill*         0x0000000000800101        0x1 
+                0x0000000000800102                _edata = .
+                0x0000000000800102                PROVIDE (__data_end = .)
+
+.bss            0x0000000000800102       0x2a
+                0x0000000000800102                PROVIDE (__bss_start = .)
+ *(.bss)
+ .bss           0x0000000000800102       0x1d obj/Joystick.o
+                0x0000000000800102                portsval
+                0x0000000000800104                ypos
+                0x0000000000800106                xpos
+                0x0000000000800108                report_count
+                0x000000000080010a                last_report
+                0x0000000000800112                echoes
+                0x0000000000800114                BControl
+                0x0000000000800115                buttonData3
+                0x0000000000800116                buttonData2
+                0x0000000000800117                buttonData1
+                0x0000000000800118                dataToSend
+ .bss           0x000000000080011f        0x3 obj/DeviceStandardReq.o
+                0x000000000080011f                USB_Device_RemoteWakeupEnabled
+                0x0000000000800120                USB_Device_CurrentlySelfPowered
+                0x0000000000800121                USB_Device_ConfigurationNumber
+ .bss           0x0000000000800122        0xa obj/USBTask.o
+                0x0000000000800122                USB_DeviceState
+                0x0000000000800123                USB_ControlRequest
+                0x000000000080012b                USB_IsInitialized
+ *(.bss*)
+ *(COMMON)
+                0x000000000080012c                PROVIDE (__bss_end = .)
+                0x0000000000000fce                __data_load_start = LOADADDR (.data)
+                0x0000000000000fd0                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x000000000080012c        0x0
+                [!provide]                        PROVIDE (__noinit_start = .)
+ *(.noinit .noinit.* .gnu.linkonce.n.*)
+                [!provide]                        PROVIDE (__noinit_end = .)
+                0x000000000080012c                _end = .
+                [!provide]                        PROVIDE (__heap_start = .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x12
+ *(.comment)
+ .comment       0x0000000000000000       0x12 obj/Joystick.o
+                                         0x13 (size before relaxing)
+ .comment       0x0000000000000012       0x13 obj/Descriptors.o
+ .comment       0x0000000000000012       0x13 obj/EndpointStream_AVR8.o
+ .comment       0x0000000000000012       0x13 obj/Endpoint_AVR8.o
+ .comment       0x0000000000000012       0x13 obj/USBController_AVR8.o
+ .comment       0x0000000000000012       0x13 obj/USBInterrupt_AVR8.o
+ .comment       0x0000000000000012       0x13 obj/DeviceStandardReq.o
+ .comment       0x0000000000000012       0x13 obj/Events.o
+ .comment       0x0000000000000012       0x13 obj/USBTask.o
+
+.note.gnu.avr.deviceinfo
+                0x0000000000000000       0x40
+ .note.gnu.avr.deviceinfo
+                0x0000000000000000       0x40 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x2d0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x78 obj/Joystick.o
+ .debug_aranges
+                0x0000000000000078       0x20 obj/Descriptors.o
+ .debug_aranges
+                0x0000000000000098       0xc8 obj/EndpointStream_AVR8.o
+ .debug_aranges
+                0x0000000000000160       0x40 obj/Endpoint_AVR8.o
+ .debug_aranges
+                0x00000000000001a0       0x30 obj/USBController_AVR8.o
+ .debug_aranges
+                0x00000000000001d0       0x30 obj/USBInterrupt_AVR8.o
+ .debug_aranges
+                0x0000000000000200       0x20 obj/DeviceStandardReq.o
+ .debug_aranges
+                0x0000000000000220       0x30 obj/Events.o
+ .debug_aranges
+                0x0000000000000250       0x20 obj/USBTask.o
+ .debug_aranges
+                0x0000000000000270       0x20 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .debug_aranges
+                0x0000000000000290       0x20 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .debug_aranges
+                0x00000000000002b0       0x20 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x5f98
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0x6ba d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ .debug_info    0x00000000000006ba      0xfe9 obj/Joystick.o
+ .debug_info    0x00000000000016a3      0x765 obj/Descriptors.o
+ .debug_info    0x0000000000001e08     0x1de0 obj/EndpointStream_AVR8.o
+ .debug_info    0x0000000000003be8      0x720 obj/Endpoint_AVR8.o
+ .debug_info    0x0000000000004308      0x533 obj/USBController_AVR8.o
+ .debug_info    0x000000000000483b      0x6e2 obj/USBInterrupt_AVR8.o
+ .debug_info    0x0000000000004f1d      0xc62 obj/DeviceStandardReq.o
+ .debug_info    0x0000000000005b7f       0xe9 obj/Events.o
+ .debug_info    0x0000000000005c68      0x2c4 obj/USBTask.o
+ .debug_info    0x0000000000005f2c       0x24 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .debug_info    0x0000000000005f50       0x24 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .debug_info    0x0000000000005f74       0x24 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+
+.debug_abbrev   0x0000000000000000     0x1b7d
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x65d d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ .debug_abbrev  0x000000000000065d      0x4fe obj/Joystick.o
+ .debug_abbrev  0x0000000000000b5b      0x176 obj/Descriptors.o
+ .debug_abbrev  0x0000000000000cd1      0x265 obj/EndpointStream_AVR8.o
+ .debug_abbrev  0x0000000000000f36      0x29d obj/Endpoint_AVR8.o
+ .debug_abbrev  0x00000000000011d3      0x1c9 obj/USBController_AVR8.o
+ .debug_abbrev  0x000000000000139c      0x20e obj/USBInterrupt_AVR8.o
+ .debug_abbrev  0x00000000000015aa      0x365 obj/DeviceStandardReq.o
+ .debug_abbrev  0x000000000000190f       0x89 obj/Events.o
+ .debug_abbrev  0x0000000000001998      0x1a9 obj/USBTask.o
+ .debug_abbrev  0x0000000000001b41       0x14 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .debug_abbrev  0x0000000000001b55       0x14 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .debug_abbrev  0x0000000000001b69       0x14 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+
+.debug_line     0x0000000000000000     0x70f3
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000       0x1d d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ .debug_line    0x000000000000001d     0x11d3 obj/Joystick.o
+ .debug_line    0x00000000000011f0      0x2ae obj/Descriptors.o
+ .debug_line    0x000000000000149e     0x32cf obj/EndpointStream_AVR8.o
+ .debug_line    0x000000000000476d      0x968 obj/Endpoint_AVR8.o
+ .debug_line    0x00000000000050d5      0x598 obj/USBController_AVR8.o
+ .debug_line    0x000000000000566d      0x843 obj/USBInterrupt_AVR8.o
+ .debug_line    0x0000000000005eb0      0xd92 obj/DeviceStandardReq.o
+ .debug_line    0x0000000000006c42       0xf6 obj/Events.o
+ .debug_line    0x0000000000006d38      0x26e obj/USBTask.o
+ .debug_line    0x0000000000006fa6       0x51 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .debug_line    0x0000000000006ff7       0x87 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .debug_line    0x000000000000707e       0x75 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+
+.debug_frame    0x0000000000000000      0x72c
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000      0x110 obj/Joystick.o
+ .debug_frame   0x0000000000000110       0x24 obj/Descriptors.o
+ .debug_frame   0x0000000000000134      0x404 obj/EndpointStream_AVR8.o
+ .debug_frame   0x0000000000000538       0x78 obj/Endpoint_AVR8.o
+ .debug_frame   0x00000000000005b0       0x44 obj/USBController_AVR8.o
+ .debug_frame   0x00000000000005f4       0x8c obj/USBInterrupt_AVR8.o
+ .debug_frame   0x0000000000000680       0x3c obj/DeviceStandardReq.o
+ .debug_frame   0x00000000000006bc       0x44 obj/Events.o
+ .debug_frame   0x0000000000000700       0x2c obj/USBTask.o
+
+.debug_str      0x0000000000000000     0x21f7
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x265 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+ .debug_str     0x0000000000000265      0x903 obj/Joystick.o
+                                        0x981 (size before relaxing)
+ .debug_str     0x0000000000000b68      0x739 obj/Descriptors.o
+                                        0x91b (size before relaxing)
+ .debug_str     0x00000000000012a1      0x471 obj/EndpointStream_AVR8.o
+                                        0x874 (size before relaxing)
+ .debug_str     0x0000000000001712      0x26d obj/Endpoint_AVR8.o
+                                        0x628 (size before relaxing)
+ .debug_str     0x000000000000197f      0x266 obj/USBController_AVR8.o
+                                        0x53e (size before relaxing)
+ .debug_str     0x0000000000001be5       0xd5 obj/USBInterrupt_AVR8.o
+                                        0x4e9 (size before relaxing)
+ .debug_str     0x0000000000001cba      0x441 obj/DeviceStandardReq.o
+                                        0x9b7 (size before relaxing)
+ .debug_str     0x00000000000020fb       0x58 obj/Events.o
+                                        0x1df (size before relaxing)
+ .debug_str     0x0000000000002153       0x60 obj/USBTask.o
+                                        0x38d (size before relaxing)
+ .debug_str     0x00000000000021b3       0x44 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+ .debug_str     0x00000000000021f7       0x44 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .debug_str     0x00000000000021f7       0x44 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+
+.debug_loc      0x0000000000000000     0x39c5
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000      0x39f obj/Joystick.o
+ .debug_loc     0x000000000000039f      0x2fd obj/Descriptors.o
+ .debug_loc     0x000000000000069c     0x271c obj/EndpointStream_AVR8.o
+ .debug_loc     0x0000000000002db8      0x4cb obj/Endpoint_AVR8.o
+ .debug_loc     0x0000000000003283       0x9b obj/USBController_AVR8.o
+ .debug_loc     0x000000000000331e      0x2b0 obj/USBInterrupt_AVR8.o
+ .debug_loc     0x00000000000035ce      0x395 obj/DeviceStandardReq.o
+ .debug_loc     0x0000000000003963       0x62 obj/USBTask.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000      0x500
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0x80 obj/Joystick.o
+ .debug_ranges  0x0000000000000080       0x28 obj/Descriptors.o
+ .debug_ranges  0x00000000000000a8      0x1f8 obj/EndpointStream_AVR8.o
+ .debug_ranges  0x00000000000002a0       0xd0 obj/Endpoint_AVR8.o
+ .debug_ranges  0x0000000000000370       0x20 obj/USBController_AVR8.o
+ .debug_ranges  0x0000000000000390       0x20 obj/USBInterrupt_AVR8.o
+ .debug_ranges  0x00000000000003b0      0x120 obj/DeviceStandardReq.o
+ .debug_ranges  0x00000000000004d0       0x20 obj/Events.o
+ .debug_ranges  0x00000000000004f0       0x10 obj/USBTask.o
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x0000000000000000       0x2a
+ *(.debug_line_str)
+ .debug_line_str
+                0x0000000000000000       0x2a d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+                                         0x54 (size before relaxing)
+ .debug_line_str
+                0x000000000000002a       0x54 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+ .debug_line_str
+                0x000000000000002a       0x54 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+ *(.debug_rnglists)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+OUTPUT(Joystick.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+BControl                                          obj/Joystick.o
+CALLBACK_HIDParser_FilterHIDReportItem            obj/HIDParser.o
+CALLBACK_USB_GetDescriptor                        obj/Descriptors.o
+                                                  obj/DeviceStandardReq.o
+ConfigurationDescriptor                           obj/Descriptors.o
+DeviceDescriptor                                  obj/Descriptors.o
+EVENT_USB_Device_ConfigurationChanged             obj/Joystick.o
+                                                  obj/DeviceStandardReq.o
+EVENT_USB_Device_Connect                          obj/Joystick.o
+                                                  obj/USBInterrupt_AVR8.o
+EVENT_USB_Device_ControlRequest                   obj/Joystick.o
+                                                  obj/DeviceStandardReq.o
+EVENT_USB_Device_Disconnect                       obj/Joystick.o
+                                                  obj/USBInterrupt_AVR8.o
+EVENT_USB_Device_Reset                            obj/Events.o
+                                                  obj/USBInterrupt_AVR8.o
+EVENT_USB_Device_StartOfFrame                     obj/Events.o
+                                                  obj/USBInterrupt_AVR8.o
+EVENT_USB_Device_Suspend                          obj/Events.o
+EVENT_USB_Device_WakeUp                           obj/Events.o
+Endpoint_ClearEndpoints                           obj/Endpoint_AVR8.o
+Endpoint_ClearStatusStage                         obj/Endpoint_AVR8.o
+                                                  obj/DeviceStandardReq.o
+Endpoint_ConfigureEndpointTable                   obj/Endpoint_AVR8.o
+Endpoint_ConfigureEndpoint_Prv                    obj/Endpoint_AVR8.o
+                                                  obj/USBInterrupt_AVR8.o
+                                                  obj/USBController_AVR8.o
+                                                  obj/Joystick.o
+Endpoint_Discard_Stream                           obj/EndpointStream_AVR8.o
+Endpoint_Null_Stream                              obj/EndpointStream_AVR8.o
+Endpoint_Read_Control_EStream_BE                  obj/EndpointStream_AVR8.o
+Endpoint_Read_Control_EStream_LE                  obj/EndpointStream_AVR8.o
+Endpoint_Read_Control_Stream_BE                   obj/EndpointStream_AVR8.o
+Endpoint_Read_Control_Stream_LE                   obj/EndpointStream_AVR8.o
+Endpoint_Read_EStream_BE                          obj/EndpointStream_AVR8.o
+Endpoint_Read_EStream_LE                          obj/EndpointStream_AVR8.o
+Endpoint_Read_Stream_BE                           obj/EndpointStream_AVR8.o
+Endpoint_Read_Stream_LE                           obj/EndpointStream_AVR8.o
+                                                  obj/Joystick.o
+Endpoint_WaitUntilReady                           obj/Endpoint_AVR8.o
+                                                  obj/EndpointStream_AVR8.o
+Endpoint_Write_Control_EStream_BE                 obj/EndpointStream_AVR8.o
+Endpoint_Write_Control_EStream_LE                 obj/EndpointStream_AVR8.o
+Endpoint_Write_Control_PStream_BE                 obj/EndpointStream_AVR8.o
+Endpoint_Write_Control_PStream_LE                 obj/EndpointStream_AVR8.o
+                                                  obj/DeviceStandardReq.o
+Endpoint_Write_Control_Stream_BE                  obj/EndpointStream_AVR8.o
+Endpoint_Write_Control_Stream_LE                  obj/EndpointStream_AVR8.o
+                                                  obj/DeviceStandardReq.o
+Endpoint_Write_EStream_BE                         obj/EndpointStream_AVR8.o
+Endpoint_Write_EStream_LE                         obj/EndpointStream_AVR8.o
+Endpoint_Write_PStream_BE                         obj/EndpointStream_AVR8.o
+Endpoint_Write_PStream_LE                         obj/EndpointStream_AVR8.o
+Endpoint_Write_Stream_BE                          obj/EndpointStream_AVR8.o
+Endpoint_Write_Stream_LE                          obj/EndpointStream_AVR8.o
+                                                  obj/Joystick.o
+GenerateReport                                    obj/Joystick.o
+JoystickReport                                    obj/Descriptors.o
+LEDoff                                            obj/Joystick.o
+LEDon                                             obj/Joystick.o
+LanguageString                                    obj/Descriptors.o
+ManufacturerString                                obj/Descriptors.o
+My_HID_Task                                       obj/Joystick.o
+ProductString                                     obj/Descriptors.o
+SetupHardware                                     obj/Joystick.o
+USART_Init                                        obj/Joystick.o
+USB_ControlRequest                                obj/USBTask.o
+                                                  obj/DeviceStandardReq.o
+                                                  obj/Endpoint_AVR8.o
+                                                  obj/EndpointStream_AVR8.o
+USB_DeviceState                                   obj/USBTask.o
+                                                  obj/DeviceStandardReq.o
+                                                  obj/USBInterrupt_AVR8.o
+                                                  obj/USBController_AVR8.o
+                                                  obj/Endpoint_AVR8.o
+                                                  obj/EndpointStream_AVR8.o
+                                                  obj/Joystick.o
+USB_Device_ConfigurationNumber                    obj/DeviceStandardReq.o
+                                                  obj/USBInterrupt_AVR8.o
+                                                  obj/USBController_AVR8.o
+USB_Device_CurrentlySelfPowered                   obj/DeviceStandardReq.o
+                                                  obj/USBController_AVR8.o
+USB_Device_ProcessControlRequest                  obj/DeviceStandardReq.o
+                                                  obj/USBTask.o
+USB_Device_RemoteWakeupEnabled                    obj/DeviceStandardReq.o
+                                                  obj/USBController_AVR8.o
+USB_Device_SendRemoteWakeup                       obj/Device_AVR8.o
+USB_Disable                                       obj/USBController_AVR8.o
+USB_Event_Stub                                    obj/Events.o
+USB_Event_Stub_2                                  obj/Events.o
+USB_Event_Stub_3                                  obj/Events.o
+USB_GetHIDReportItemInfo                          obj/HIDParser.o
+USB_GetHIDReportSize                              obj/HIDParser.o
+USB_GetNextDescriptorComp                         obj/ConfigDescriptors.o
+USB_GetNextDescriptorOfType                       obj/ConfigDescriptors.o
+USB_GetNextDescriptorOfTypeAfter                  obj/ConfigDescriptors.o
+USB_GetNextDescriptorOfTypeBefore                 obj/ConfigDescriptors.o
+USB_INT_ClearAllInterrupts                        obj/USBInterrupt_AVR8.o
+                                                  obj/USBController_AVR8.o
+USB_INT_DisableAllInterrupts                      obj/USBInterrupt_AVR8.o
+                                                  obj/USBController_AVR8.o
+USB_Init                                          obj/USBController_AVR8.o
+                                                  obj/Joystick.o
+USB_IsInitialized                                 obj/USBTask.o
+                                                  obj/USBController_AVR8.o
+USB_ProcessHIDReport                              obj/HIDParser.o
+USB_ResetInterface                                obj/USBController_AVR8.o
+USB_SetHIDReportItemInfo                          obj/HIDParser.o
+USB_USBTask                                       obj/USBTask.o
+                                                  obj/EndpointStream_AVR8.o
+                                                  obj/Joystick.o
+__FUSE_REGION_LENGTH__                            d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__bad_interrupt                                   d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__bss_end                                         d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+__bss_start                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+__data_end                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+__data_load_start                                 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+__data_start                                      d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+__do_clear_bss                                    d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_clear_bss.o)
+                                                  obj/USBTask.o
+                                                  obj/DeviceStandardReq.o
+                                                  obj/Joystick.o
+__do_copy_data                                    d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_copy_data.o)
+                                                  obj/Joystick.o
+__heap_end                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__init                                            d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__mulhi3                                          d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_mulhi3.o)
+                                                  obj/HIDParser.o
+__stack                                           d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_1                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_10                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_11                                       obj/USBInterrupt_AVR8.o
+                                                  d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_12                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_13                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_14                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_15                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_16                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_17                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_18                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_19                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_2                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_20                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_21                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_22                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_23                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_24                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_25                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_26                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_27                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_28                                       d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_3                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_4                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_5                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_6                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_7                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_8                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_9                                        d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vector_default                                  d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+__vectors                                         d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+_exit                                             d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+buttonData1                                       obj/Joystick.o
+buttonData2                                       obj/Joystick.o
+buttonData3                                       obj/Joystick.o
+dataToSend                                        obj/Joystick.o
+echoes                                            obj/Joystick.o
+eeprom_read_byte                                  d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eerd_byte.o)
+                                                  obj/EndpointStream_AVR8.o
+eeprom_update_byte                                d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+                                                  obj/EndpointStream_AVR8.o
+eeprom_update_r18                                 d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libatmega16u2.a(eeupd_byte.o)
+exit                                              d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/avr35\libgcc.a(_exit.o)
+                                                  d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+flushSerialRead                                   obj/Joystick.o
+last_report                                       obj/Joystick.o
+main                                              obj/Joystick.o
+                                                  d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35/crtatmega16u2.o
+memcpy                                            d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memcpy.o)
+                                                  d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+memmove                                           d:/smashbox/avr-gcc-11.1.0-x64-windows/bin/../lib/gcc/avr/11.1.0/../../../../avr/lib/avr35\libc.a(memmove.o)
+                                                  obj/HIDParser.o
+portsval                                          obj/Joystick.o
+report_count                                      obj/Joystick.o
+serialRead                                        obj/Joystick.o
+serialWrite                                       obj/Joystick.o
+state                                             obj/Joystick.o
+xpos                                              obj/Joystick.o
+ypos                                              obj/Joystick.o
