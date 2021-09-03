@@ -25,4 +25,4 @@ Unlike the Wii U, which handles these controllers on a 'per-game' basis, the Swi
 
 ## UNOSMASHBOX IN ACTION
 
-https://www.youtube.com/watch?v=O-cdKwQuEkM
+https://youtu.be/O-cdKwQuEkM
