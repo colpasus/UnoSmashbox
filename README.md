@@ -28,4 +28,4 @@ https://youtu.be/O-cdKwQuEkM
 
 ### Second controller version
 
-https://www.youtube.com/watch?v=EnJZzXLbosc&t=237s
+https://youtu.be/EnJZzXLbosc
