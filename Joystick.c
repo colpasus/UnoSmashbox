@@ -41,17 +41,9 @@ Tilt                       1
 
 
 
-Progs, to be done:
 
-Turbo
-Erase Turbo
-Macro Record
-Macro End
-Macro Start
-
-
-
-
+Version 1.0 Colpasus
+First working version.
 
 
 */

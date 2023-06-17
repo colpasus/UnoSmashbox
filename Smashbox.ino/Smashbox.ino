@@ -31,7 +31,7 @@ int pinb = 12;
 //
 //
 
-// Version 1.7
+// Version 1.7 Colpasus
 // No changes from 1.5 but upload to github using git tools and changing .ino extension
 
 float CountDownNoPushEffect=0;
