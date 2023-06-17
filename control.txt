@@ -1,2 +1,1 @@
-Version 1.7
-Actualizado desde local
+Version 1.7 desde windows

@@ -1,25 +1,47 @@
 #include "Smashbox.h"
 boolean led = false;
 int pinled1 = 13;
-int pinled2 = A5;
+int pinled2 = A5;                                                                                                                                                                                                                                                                                  
 int pinled3 = A3;
 int pinled4 = A4;
 int pinb = 12;
 
 //Version 1.1 Combo record and play added
 // colpasus 12/09/2021
+// Version 1.2. Add pad/analog switch button for recording of DarkSouls infinite souls glitch.
+
+// Version 1.3 Add Smashbox instant double jump for Smashbros Ultimate
+// Button pin_SpecialReplicateButton is used to instant double jump just pressing the special button.
+
+
+// Version 1.4 
+// Tilt jump button to small jump option.
+
+// Instructions
+//                          4.0 PAD / ANALOG SWITCHING
+// Default mode is analog stick with 3 levels of speed (RUN, WALK, STEP BY STEP) depending on
+// the combination of buttons pressed.
+// Pressing just MODE button direction buttons change from analog to digital pad mode.
+// Pressing MODE button again, direction buttons will change again to analog mode.
+// When analog mode is activated, led of tilt button will be turned off.
+// When digital mode is activated, led of tilt button will be turned on.
+  
+// Version 1.5
+// Addes two new special buttons.
+//
+//
+
+
 
 float CountDownNoPushEffect=0;
 float CountDownNoPushEffectConst=5000;  // 5 secs no push activate effect.
 
 
-
-//WORKING ON IT. NOT TESTED YET
-
 boolean TiltSpecialButtonZL_ON=false;  // We can use ZL to TILT BOTTON IF PRESS MINUS/PLUS/ZL AT THE SAME TIME
 
 
-//#define DEBUG
+//#define DEBUG   //Uncomment for debuggind only.
+
 
 #define KICKOFFCHEATS
 
@@ -32,14 +54,14 @@ boolean KOOL_AUTOLOB=false;  // We can use pin_A for a LOB
 
 
 
-
 int TiltDoubleClick=0;   // If push right and left direction stick at the same time, tilt to the direction of the first pushed (walking, not running).
 
 const int FactorTilt=64;
+int cycles=0;
 
 // -1 LEFT
-// 0 NO
-// 1 RIGHT
+// +0 NEUTRAL
+// +1 RIGHT
 
 int pin_X=2;
 int pin_Y=3;
@@ -76,6 +98,16 @@ int pin_MinusOn= 26;
 int pin_PlusOn=27;
 int pin_HomeOn=28;
 
+//v 1.3 New buttons
+int pin_SwitchPadAnalog=10;  // Switch from ANALOG to DIGITAL cursors and TURBO
+int pin_SpecialReplicateButton=13;  // Special programable button (can replicate any other button)
+
+
+
+//v 1.5 New buttons
+int pin_SpecialButtonShield=12; // Shield button (ZL)
+int pin_SpecialButtonSmash=11;  // Smash button (Normal Atack + Special Atack)
+
 
 
 // Smashbox needs a way to avoid running in some situations.
@@ -111,11 +143,15 @@ int Led_LeftStick_Right_pin =  49  ;
 int Led_LeftStick_Down_pin  =  50  ;
 int Led_LeftStick_Left_pin  =  51  ;
 
+int Led_pin_SwitchPadAnalog  =  52  ;
+
 
 
 float oldTime,currentTime,oldLedsTime,currentTimeLedsRotate,startTimeComboRecord,startTimeComboPlay,BlinkTime=0,LastTime=0;
 float InitialTime;
 float InitialLedsSequence=2500; //10 secs
+float LastStatusButtonIDJTimeStart=0; //Starting time of IDJ
+float LastStatusButtonISJTimeStart=0; //Starting time of ISJ
 
 float RotateSpeed=800; //10 secs
 float RotateSpeedInitial=500; //10 secs
@@ -136,6 +172,49 @@ int myLedPins[] = {
  Led_pin_SWITCH_ZL,
  Led_pin_SWITCH_ZR 
  };
+
+/*
+int ISJ_myButtons[] = {
+pin_SWITCH_L,
+pin_SWITCH_R,
+pin_SWITCH_ZL,
+pin_SWITCH_ZR,
+pin_X=2,
+pin_Y=3,
+pin_A=4,
+pin_B=5
+};
+
+boolean LastStatusButtonISJ[]={0,0,0,0,0,0,0,0};
+float LastStatusButtonISJTimeStart[]={0,0,0,0,0,0,0,0};
+*/
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+// Turbo definition
+boolean TurboActivate[40];
+boolean TurboKeep[40];
+float TurboDelay=50;
+boolean Blinking=false; // if true, no send action
+float DeltaBlinkTime=0;
+float TotalBlinkTime=0;
+float CurrentBlinkTime=0;
+float LastBlinkTime=0;
+/////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////
+// Frames per second control
+
+float FramesPerSecond=100;
+float ControlFramesCurrentTime=0;
+float ControlFramesLastTime=0;
+float MillisPerFrame=1000*(1/FramesPerSecond);
+long  Waits=0;
+
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -173,6 +252,19 @@ record_type RecordingSteps[MaxRecordingSteps];
 // End recording control
 /////////////////////////////////////////////////////////////////////
 
+
+/////////////////////////////////////////////////////////////////////
+// Switch Pad/Analog control
+/////////////////////////////////////////////////////////////////////
+
+boolean LastStatusButtonSwitch=false;
+boolean StatusAnalogicJoystick=true;   // If true, analog joystick is used, if false digital pad is used.
+
+/////////////////////////////////////////////////////////////////////
+// IDJ (Instant double jump)
+/////////////////////////////////////////////////////////////////////
+boolean LastStatusButtonIDJ=false;
+boolean LastStatusButtonISJ=false;
 
 void setup(){
 
@@ -222,7 +314,7 @@ void loop(){
 
 
 void setupPins(void){
-  for (int i = 2; i <= 11; i++){
+  for (int i = 2; i <= 13; i++){
     pinMode(i, INPUT);
     digitalWrite(i, HIGH);
   }
@@ -271,6 +363,61 @@ dataForController_t getControllerData(void){
   byte *PointerToDataOld = ( byte*) &LastRecordingData;
 
 
+  while ( ( millis() - ControlFramesLastTime ) < MillisPerFrame )
+  { 
+    Waits++;    
+  }
+  
+  ControlFramesLastTime=millis();
+
+
+
+
+  if (!digitalRead(pin_SwitchPadAnalog)  && AnyButtonPressed() )
+  {
+    for (int i=pin_X; i<pin_SWITCH_ZR+1; ++i)
+    {
+      if (i==pin_B+1) i=pin_SWITCH_L;  // Jump from pin_B to pin_SWITCH_ZR
+
+      if ( !digitalRead (i) && !TurboKeep[i] )  // First time pushed, triggered
+      {
+        TurboKeep[i]=true;
+        TurboActivate[i]=!TurboActivate[i]; //Switch on/off blink button [i]
+        
+#ifdef DEBUG  
+  Serial.println("Button");
+  Serial.println(i);
+  Serial.println(TurboActivate[i]);
+#endif
+              
+      }
+      
+    }
+  }
+
+  
+// Control Pad Digital or Joy Analog
+
+
+//    if (!digitalRead(pin_SwitchPadAnalog) && LastStatusButtonSwitch==false  )  // Clicked switch button, not holding
+    if (!digitalRead(pin_SwitchPadAnalog) && LastStatusButtonSwitch==false && !AnyButtonPressed() )  // Clicked switch button, not holding
+    {
+       LastStatusButtonSwitch=true;
+       StatusAnalogicJoystick=!StatusAnalogicJoystick;
+       return controllerData;       
+    }
+
+    if (digitalRead(pin_SwitchPadAnalog))
+      LastStatusButtonSwitch=false;
+    
+
+// Led on if DIGITAL PAD IS ENABLED
+
+    if (!StatusAnalogicJoystick) 
+      digitalWrite( Led_pin_SwitchPadAnalog , HIGH);
+    else
+      digitalWrite( Led_pin_SwitchPadAnalog , LOW);
+
   if (AnyButtonPressed() && Playing==true)  // If combo running, if any button is pressed the combo is finished.
   {
 
@@ -290,7 +437,9 @@ dataForController_t getControllerData(void){
   
 // Recording control of buttons (SPECIAL + PLUS)
 // If both buttons are pressed, no send nothing and preparing for start to record.
-if ( !digitalRead ( pin_TILT) && !digitalRead(pin_PlusOn) && !Recording)
+//if ( !digitalRead ( pin_TILT) && !digitalRead(pin_PlusOn) && !Recording)  <<<--- Restart recording even if I'm recording
+
+if ( !digitalRead ( pin_TILT) && !digitalRead(pin_PlusOn))
 {
 
 #ifdef DEBUG  
@@ -322,7 +471,9 @@ if ( !digitalRead ( pin_TILT) && !digitalRead(pin_PlusOn) && !Recording)
 // If both buttons are pressed, no send nothing and stop recording.
 if ( !digitalRead ( pin_TILT) && !digitalRead(pin_MinusOn) && Recording==true)
 {
-
+#ifdef DEBUG  
+  Serial.println("RESET PLAY");
+#endif
   PreparingForRecording=false;
   Recording=false;
   Playing=false;
@@ -338,17 +489,23 @@ if ( !digitalRead ( pin_TILT) && !digitalRead(pin_MinusOn) && Recording==true)
 }
 
 
-//If push TILG + HomeOn recording is stoped, we can play
+//If push TILT + HomeOn recording is stoped, we can play
 if ( !digitalRead ( pin_TILT) && !digitalRead(pin_HomeOn) && Recording==false && Playing==false)
 {
+
+#ifdef DEBUG  
+    Serial.println("PLAY PRESSED");
+    Serial.println(Playing);
+    Serial.println(PreparingForRecording);
+    Serial.println(Recording);
+#endif
+
+
 
   PreparingForRecording=false;
   Recording=false;
   Playing=true;
 
-#ifdef DEBUG  
-    Serial.println("PLAY PRESSED");
-#endif
 
 // If recording combo NOT send special buttons.
   controllerData.MinusOn = 0;
@@ -374,7 +531,7 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
   float deltaTimeCombo=currentTime-startTimeComboPlay;
 
 
-  if ( deltaTimeCombo >= RecordingSteps[PlayingStep].Timestamp ) //oscar
+  if ( deltaTimeCombo >= RecordingSteps[PlayingStep].Timestamp )
   { //New sequence of buttons
     //Execute buttons
 
@@ -413,11 +570,7 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
                      RotateSpeed=RotateSpeedInitial; 
                      RunEffectOn=false;
 
-//                     NormalLedEffect(); 
-/*
-    const byte *MyPointerToDataArray = (byte*) &RecordingSteps[PlayingStep].data;                
-    PointerToDataNew=MyPointerToDataArray;
-*/
+
 
 #ifdef DEBUG  
         Serial.println();
@@ -449,12 +602,7 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
               Serial.println("SEQUENCE FINISHED, NEXT LOOP --------------------");
            #endif
 
-/*        
-        PreparingForRecording=false;
-        Recording=false;
-        Playing=false;
-        PlayingStep=0;      
- */
+
         PlayingStep=0;  // Restart loop.
     
 
@@ -490,12 +638,7 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
 
                     return controllerData;
 
-/*
-    const byte *MyPointerToDataArray_1 = (byte*) &RecordingSteps[PlayingStep-1].data;                
-    PointerToDataNew=MyPointerToDataArray_1;    
-    controllerData=RecordingSteps[PlayingStep-1].data; 
 
-*/    
   }
 
 
@@ -503,14 +646,96 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
   
 }
 
+// Prevent send buttons if special button is pressed.
+
+  if ( !digitalRead ( pin_TILT) && (!digitalRead(pin_HomeOn) || !digitalRead(pin_PlusOn) || !digitalRead(pin_MinusOn) ) )
+    return controllerData;
+
 
 
 // SET XYAB
 
   controllerData.triangleOn = !digitalRead(pin_X);
-  controllerData.circleOn = !digitalRead(pin_Y);
+  controllerData.circleOn = !digitalRead(pin_Y);  
   controllerData.squareOn = !digitalRead(pin_A);
+//  controllerData.crossOn = !digitalRead(pin_B) || !digitalRead(pin_SpecialReplicateButton);  //pin_SpecialReplicateButton
   controllerData.crossOn = !digitalRead(pin_B);
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// IDJ (Instant Double Jump) CONTROL
+///////////////////////////////////////////////////////////////////////////////////////
+
+  if ( digitalRead(pin_SpecialReplicateButton) ) //NO PRESS IDJ
+  {
+    LastStatusButtonIDJ=false;
+    LastStatusButtonIDJTimeStart=0;
+  }
+
+  
+  if ( LastStatusButtonIDJ && !digitalRead(pin_SpecialReplicateButton) ) // IDJ IN PROCESS (NO FIRST FRAME)
+  {
+    float IDJ_threshold_1=16*2; // 2 frames are 32ms
+    float IDJ_threshold_2=16*6; // 6 frames are 96ms 
+    float IDJ_current_time=millis();
+    float IDJ_delta=IDJ_current_time - LastStatusButtonIDJTimeStart;
+
+    if  ( IDJ_delta < IDJ_threshold_1 )                                   controllerData.crossOn=true; 
+//    if  ( ( IDJ_delta > IDJ_threshold_1 ) && ( IDJ_delta > IDJ_threshold_2 ) ) controllerData.crossOn=false; 
+    if  ( ( IDJ_delta >= IDJ_threshold_1 ) && ( IDJ_delta < IDJ_threshold_2 ) ) controllerData.crossOn=false; 
+    if  ( IDJ_delta >= IDJ_threshold_2 )                                   controllerData.crossOn=true;      
+  }
+
+
+  if ( (!LastStatusButtonIDJ) && !digitalRead(pin_SpecialReplicateButton) ) //INITIAL IDJ PRESS
+  {
+    LastStatusButtonIDJ=true;
+    LastStatusButtonIDJTimeStart=millis();
+
+  }
+  
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// ISJ (Instant Single Jump) CONTROL. If TILT button and Jump bottun are pressed, 
+// no long jump is done, insteed small jump is done.
+// Same for the resto of buttons (Experimental only).
+///////////////////////////////////////////////////////////////////////////////////////
+
+  if ( digitalRead(pin_B) ) //NO PRESS JUMP
+  {
+    LastStatusButtonISJ=false;
+    LastStatusButtonISJTimeStart=0;                               
+  } 
+
+  
+  if ( LastStatusButtonISJ && !digitalRead(pin_B) && !digitalRead(pin_TILT) ) // ISJ IN PROCESS (NO FIRST FRAME)
+  {                            
+    float ISJ_threshold_1=16*1.5; // 1.5 frames are 16ms
+    float ISJ_threshold_2=16*6; // 6 frames are 96ms 
+    float ISJ_current_time=millis();
+    float ISJ_delta=ISJ_current_time - LastStatusButtonISJTimeStart;
+
+    if  ( ISJ_delta < ISJ_threshold_1 )                                   controllerData.crossOn=true; 
+    if  ( ISJ_delta >= ISJ_threshold_1 )   controllerData.crossOn=false; 
+//    if  ( ( ISJ_delta > ISJ_threshold_1 ) && ( ISJ_delta > ISJ_threshold_2 ) ) controllerData.crossOn=false; 
+//    if  ( ISJ_delta > ISJ_threshold_2 )                                   controllerData.crossOn=true;         // ISJ is a single jump, not double.
+  }
+
+
+  if ( (!LastStatusButtonISJ) && !digitalRead(pin_B) && !digitalRead(pin_TILT)) //INITIAL ISJ PRESS
+  {
+    LastStatusButtonISJ=true;
+    LastStatusButtonISJTimeStart=millis();
+
+  } 
+
+///////////////////////////////////////////////////////////////////////////////////////
+
 
 
 // SET DPAD  
@@ -520,12 +745,7 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
   controllerData.dpadRightOn = !digitalRead(pin_dpadRightOn);
 
 
- /*  
-  controllerData.l1On = !digitalRead(10);
-  controllerData.r1On = !digitalRead(11);
-  controllerData.MinusOn = !digitalRead(A0);
-  controllerData.PlusOn = !digitalRead(A1);
-*/
+
 
 // SET ANALOGIC LEFT (NO RIGHT)
 
@@ -547,65 +767,90 @@ if ( Playing )  // IF HERE, PLAYING THE COMBO
 
 
 
-if ( !digitalRead (LeftStick_Right_pin) && !digitalRead (LeftStick_Left_pin) )   //  DOUBLE DIRECTION, LETS SEE WHAT DIRECTION WAS FIRST
-{
+    
+    if (StatusAnalogicJoystick)   ///// IF ANALOG MODE ENABLED
+    {
 
-if ( digitalRead ( pin_TILT) && digitalRead(pin_SWITCH_ZL))   // I CAN RUN, WALK OR GO STEP BY STEP. 
-  { // THIS IS THE CASE FOR WALK
-    if (TiltDoubleClick==-1) controllerData.leftStickX=   0  + FactorTilt;   // STICK TO MEDIUM
-    if (TiltDoubleClick==1) controllerData.leftStickX=   255 - FactorTilt;   // STICK TO MEDIUM
-  }  
-  else
-  {   // AND THIS IS THE CASE OF STEP BY STEP (DOUBLE DIRECTION + BUTTON ZL OR TILT) 
-    if (TiltDoubleClick==-1) controllerData.leftStickX=   128 - FactorTilt/2;
-    if (TiltDoubleClick==1) controllerData.leftStickX=   128 + FactorTilt/2;
-  }
-}
-else
-{
-  if ( digitalRead ( pin_TILT) && digitalRead(pin_SWITCH_ZL))   // NO DOUBLE DIRECTION, LETS SEE IF ZL OR TILT BUTTON IS PUSHED
-  {  //RUN
-    if (!digitalRead (LeftStick_Right_pin))     controllerData.leftStickX=255;
-    if (!digitalRead (LeftStick_Left_pin))     controllerData.leftStickX=0;
-  }
-  else
-  {  // WALK DIRECTION LEFT OR RIGHT
-    if (!digitalRead (LeftStick_Right_pin))     controllerData.leftStickX= 255 - FactorTilt;
-    if (!digitalRead (LeftStick_Left_pin))     controllerData.leftStickX=    0 + FactorTilt;
-  }
-}
+        if ( !digitalRead (LeftStick_Right_pin) && !digitalRead (LeftStick_Left_pin) )   //  DOUBLE DIRECTION, LETS SEE WHAT DIRECTION WAS FIRST
+        {
+        
+        if ( digitalRead ( pin_TILT) && digitalRead(pin_SWITCH_ZL))   // I CAN RUN, WALK OR GO STEP BY STEP. 
+          { // THIS IS THE CASE FOR WALK
+            if (TiltDoubleClick==-1) controllerData.leftStickX=   0  + FactorTilt;   // STICK TO MEDIUM
+            if (TiltDoubleClick==1) controllerData.leftStickX=   255 - FactorTilt;   // STICK TO MEDIUM
+          }  
+          else
+          {   // AND THIS IS THE CASE OF STEP BY STEP (DOUBLE DIRECTION + BUTTON ZL OR TILT) 
+            if (TiltDoubleClick==-1) controllerData.leftStickX=   128 - FactorTilt/2;
+            if (TiltDoubleClick==1) controllerData.leftStickX=   128 + FactorTilt/2;
+          }
+        }
+        else
+        {
+          if ( digitalRead ( pin_TILT) && digitalRead(pin_SWITCH_ZL))   // NO DOUBLE DIRECTION, LETS SEE IF ZL OR TILT BUTTON IS PUSHED
+          {  //RUN
+            if (!digitalRead (LeftStick_Right_pin))     controllerData.leftStickX=255;
+            if (!digitalRead (LeftStick_Left_pin))     controllerData.leftStickX=0;
+          }
+          else
+          {  // WALK DIRECTION LEFT OR RIGHT
+            if (!digitalRead (LeftStick_Right_pin))     controllerData.leftStickX= 255 - FactorTilt;
+            if (!digitalRead (LeftStick_Left_pin))     controllerData.leftStickX=    0 + FactorTilt;
+          }
+        }
+        
+        
+        // UP AND DOWN
+        
+        if ( digitalRead ( pin_TILT) && digitalRead(pin_SWITCH_ZL))   // ZL because I dont't have enough buttons
+        {
+          if (!digitalRead (LeftStick_Top_pin))     controllerData.leftStickY=0;
+          if (!digitalRead (LeftStick_Down_pin))     controllerData.leftStickY=255;
+        }
+        else
+        {
+          if (!digitalRead (LeftStick_Top_pin))     controllerData.leftStickY=64;
+          if (!digitalRead (LeftStick_Down_pin))     controllerData.leftStickY=128+64;
+        }
 
 
-// UP AND DOWN
-
-if ( digitalRead ( pin_TILT) && digitalRead(pin_SWITCH_ZL))   // ZL because I dont't have enough buttons
-{
-  if (!digitalRead (LeftStick_Top_pin))     controllerData.leftStickY=0;
-  if (!digitalRead (LeftStick_Down_pin))     controllerData.leftStickY=255;
-}
-else
-{
-  if (!digitalRead (LeftStick_Top_pin))     controllerData.leftStickY=64;
-  if (!digitalRead (LeftStick_Down_pin))     controllerData.leftStickY=128+64;
-}
+          if ( !digitalRead (LeftStick_Left_pin) && digitalRead  (LeftStick_Right_pin) ) TiltDoubleClick=-1; // Actually running LEFT
+          if ( digitalRead  (LeftStick_Left_pin) && !digitalRead (LeftStick_Right_pin) ) TiltDoubleClick=1; // Actually running LEFT
+          if ( digitalRead  (LeftStick_Left_pin) && digitalRead  (LeftStick_Right_pin) ) TiltDoubleClick=0; // NO RIGHT AND NO LEFT
+          if ( !digitalRead (LeftStick_Left_pin) && digitalRead  (!LeftStick_Right_pin) ) TiltDoubleClick=TiltDoubleClick; // I WAS TILTING AND KEEP TILTING THE SAME DIRECTION, NO CHANGES
 
 
+      }         ///// END IF OF ANALOG ENABLED
+      else
+      {  //// HERE IF ANALOG IS DISABLED, SO DIGITAL PAD IS ENABLED. DONT HAVE BUTTONS FOR EVERITHING SO A SWITCH BUTTON IS NEEDED
+          
+            controllerData.dpadLeftOn = !digitalRead(LeftStick_Left_pin);
+            controllerData.dpadRightOn = !digitalRead(LeftStick_Right_pin);
+            controllerData.dpadUpOn = !digitalRead(LeftStick_Top_pin);
+            controllerData.dpadDownOn = !digitalRead(LeftStick_Down_pin);      
+      }
+     
+     
 /////////////////////////////////////////////////////////////
 
 
-
+/*
   if (digitalRead(pin_TILT) == LOW){
     digitalWrite(pinled1, HIGH);
     digitalWrite(pinled2, HIGH);
     digitalWrite(pinled3, HIGH);
     digitalWrite(pinled4, HIGH);
   }
+*/
 
 
 // SET L ZL L3 R ZR R3
 
+//  Oboslete, you need a button for TILT, not reuse one.
+//  if (!TiltSpecialButtonZL_ON)  controllerData.l2On = !digitalRead(pin_SWITCH_ZL);   // IF  TiltSpecialButtonZL_ON=FALSE THEN ZL WORKS.
+
   controllerData.l1On = !digitalRead(pin_SWITCH_L);
-  if (!TiltSpecialButtonZL_ON)  controllerData.l2On = !digitalRead(pin_SWITCH_ZL);   // IF  TiltSpecialButtonZL_ON=FALSE THEN ZL WORKS.
+  controllerData.l2On = !digitalRead(pin_SWITCH_ZL);   // IF  TiltSpecialButtonZL_ON=FALSE THEN ZL WORKS.
   controllerData.l3On = !digitalRead(pin_LEFT_3);
 
   controllerData.r1On = !digitalRead(pin_SWITCH_R);
@@ -622,11 +867,22 @@ else
 
 
 
-  if ( !digitalRead (LeftStick_Left_pin) && digitalRead  (LeftStick_Right_pin) ) TiltDoubleClick=-1; // Actually running LEFT
-  if ( digitalRead  (LeftStick_Left_pin) && !digitalRead (LeftStick_Right_pin) ) TiltDoubleClick=1; // Actually running LEFT
-  if ( digitalRead  (LeftStick_Left_pin) && digitalRead  (LeftStick_Right_pin) ) TiltDoubleClick=0; // NO RIGHT AND NO LEFT
 
-  if ( !digitalRead (LeftStick_Left_pin) && digitalRead  (!LeftStick_Right_pin) ) TiltDoubleClick=TiltDoubleClick; // I WAS TILTING AND KEEP TILTING THE SAME DIRECTION, NO CHANGES
+// New Special Buttons. Doing OR with normal buttons.
+
+if (!digitalRead(pin_SpecialButtonShield)) controllerData.r2On=true;
+if (!digitalRead(pin_SpecialButtonSmash)) { controllerData.triangleOn=true;  controllerData.squareOn=true;   } // oscar
+
+
+ /*  <<---- DROP ????
+          if ( !digitalRead (LeftStick_Left_pin) && digitalRead  (LeftStick_Right_pin) ) TiltDoubleClick=-1; // Actually running LEFT
+          if ( digitalRead  (LeftStick_Left_pin) && !digitalRead (LeftStick_Right_pin) ) TiltDoubleClick=1; // Actually running LEFT
+          if ( digitalRead  (LeftStick_Left_pin) && digitalRead  (LeftStick_Right_pin) ) TiltDoubleClick=0; // NO RIGHT AND NO LEFT
+          if ( !digitalRead (LeftStick_Left_pin) && digitalRead  (!LeftStick_Right_pin) ) TiltDoubleClick=TiltDoubleClick; // I WAS TILTING AND KEEP TILTING THE SAME DIRECTION, NO CHANGES
+*/
+
+
+
 
   
 // ACTIVATE AND DESACTIVATE TILT BUTTON 
@@ -644,18 +900,7 @@ else
    if ( !digitalRead (pin_X) && digitalRead  (!pin_Y) && digitalRead(!pin_A)  &&  digitalRead(!pin_B)  && digitalRead(pin_SWITCH_ZL)  ) TiltSpecialButtonZL_ON=false;
 
 
-// KICK OFF CHEAT. LOB AND STOP AND RUN
 
-//compile this code if macro_name exists
-#ifdef KICKOFFCHEATS
-
-   if ( !digitalRead (LeftStick_Top_pin) && digitalRead  (!LeftStick_Right_pin) && digitalRead(!LeftStick_Down_pin)  &&  !digitalRead(LeftStick_Left_pin)  && !digitalRead(pin_Y)  ) KOOL_STOPANDRUN=true; 
-   if ( !digitalRead (LeftStick_Top_pin) && digitalRead  (!LeftStick_Right_pin) && digitalRead(!LeftStick_Down_pin)  &&  !digitalRead(LeftStick_Left_pin)  && digitalRead(pin_Y)   ) KOOL_STOPANDRUN=false;
-
-   if ( !digitalRead (LeftStick_Top_pin) && digitalRead  (!LeftStick_Right_pin) && digitalRead(!LeftStick_Down_pin)  &&  !digitalRead(LeftStick_Left_pin)  && !digitalRead(pin_A)  ) KOOL_AUTOLOB=true; 
-   if ( !digitalRead (LeftStick_Top_pin) && digitalRead  (!LeftStick_Right_pin) && digitalRead(!LeftStick_Down_pin)  &&  !digitalRead(LeftStick_Left_pin)  && digitalRead(pin_A)   ) KOOL_AUTOLOB=false;
-   
-#endif
 
 
 
@@ -666,37 +911,10 @@ else
   {
 
     NormalLedEffect();  // Normal leds
-/*
-  for (int i=pin_X; i<=pin_B ; ++i)
-    if (!digitalRead(i)) 
-      digitalWrite( i + (Led_pin_X-pin_X) , HIGH);
-    else
-      digitalWrite( i + (Led_pin_X-pin_X) , LOW);
 
-
-  for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
-    if (!digitalRead(i)) 
-      digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , HIGH);
-    else
-      digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , LOW);
-
-
-  for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
-    if (!digitalRead(i)) 
-      digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , HIGH);
-    else
-      digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , LOW);
-
-
-  for (int i=LeftStick_Top_pin; i<=LeftStick_Left_pin ; ++i)
-    if (!digitalRead(i)) 
-      digitalWrite( i + (Led_LeftStick_Top_pin-LeftStick_Top_pin) , HIGH);
-    else
-      digitalWrite( i + (Led_LeftStick_Top_pin-LeftStick_Top_pin) , LOW);
-
-*/      
   }
   
+
 
 
 
@@ -712,26 +930,7 @@ else
 //        PointerToDataOld=PointerToDataNew;
         boolean NoButtonPressed=true;
 
-/*        
-        for (int i = 0; i < sizeof controllerData; i++)  
-        {
-             if ((char)*PointerToDataOld++ != (char)*PointerToDataNew++) NoButtonPressed=true;
-       
-            
-              byte a=(char)*PointerToDataOld;
-              byte b=(char)*PointerToDataNew;
-
-
-              Serial.print("(");              
-              Serial.print(a,BIN);              
-              Serial.print(") vs (");              
-              Serial.print(b,BIN);              
-              Serial.println(")");
-                   
-            Serial.print(b,BIN);  
-        }        
-
-*/        
+    
 //        Serial.println("--------------------------");
 
 
@@ -763,27 +962,6 @@ Serial.println("]");
 
 
 
-/*
-Serial.print(controllerData.l1On,BIN);
-Serial.print(controllerData.l2On,BIN);
-Serial.print(controllerData.l3On,BIN);
-Serial.print(controllerData.r1On,BIN);
-Serial.print(controllerData.r2On,BIN);
-Serial.print(controllerData.r3On,BIN);
-Serial.print(controllerData.dpadLeftOn,BIN);
-Serial.print(controllerData.dpadUpOn,BIN);
-Serial.print(controllerData.dpadRightOn,BIN);
-Serial.print(controllerData.dpadDownOn,BIN);
-Serial.print(controllerData.MinusOn,BIN);
-Serial.print(controllerData.PlusOn,BIN);
-Serial.print(controllerData.HomeOn,BIN);
-Serial.print(controllerData.leftStickX,BIN);
-Serial.print(controllerData.leftStickY,BIN);
-Serial.print(controllerData.rightStickX,BIN);
-Serial.print(controllerData.rightStickY,BIN);
-Serial.println("]");
-*/
-
 
         
         if (!NoButtonPressed) 
@@ -796,66 +974,90 @@ Serial.println("]");
 
           Recording=true;
           PreparingForRecording=false;
-//          SaveButtonsPressed(controllerData);   //Avoid first press button
-//          return controllerData;
+
           
         }
 
-/*        
+       
 #ifdef DEBUG  
         else
           Serial.println("NOOO Detected first button pressed");
 #endif
-*/                  
+                
 
                   
-//        PointerToDataOld=PointerToDataNew;         
+       
   }
+
+
+
+// TURBO MODE, BLINKING PRESS / NO PRESS THE ACTION BUTTONS IF TURBO IS ACTIVATED FOR EACH BUTTON
+
+    cycles++;
+    CurrentBlinkTime=millis();
+    DeltaBlinkTime=CurrentBlinkTime-LastBlinkTime;
+    TotalBlinkTime+=DeltaBlinkTime;
+    if (TotalBlinkTime > TurboDelay )
+    {
+      Blinking=!Blinking;
+      TotalBlinkTime=0;
+      
+#ifdef DEBUG  
+          Serial.println("SWITCH BLINK");
+          Serial.println(cycles);
+          Serial.println(Waits);
+          
+          
+#endif
+
+      
+    }              
+    LastBlinkTime=CurrentBlinkTime;
+
+    
+    for (int i=pin_X; i<pin_SWITCH_ZR+1; ++i)
+    {
+      if (i==pin_B+1) i=pin_SWITCH_L;  // Jump from pin_B to pin_SWITCH_ZR
+
+      if ( !digitalRead (i) && TurboActivate[i] )  
+      {
+                  
+        
+#ifdef DEBUG  
+  Serial.println("Button");
+  Serial.println(i);
+  Serial.println(TurboActivate[i]);
+  Serial.println(Blinking);  
+#endif
+
+        if ( i==pin_X && TurboActivate[i] && Blinking ) controllerData.triangleOn = false;
+        if ( i==pin_Y && TurboActivate[i] && Blinking ) controllerData.circleOn = false;
+        if ( i==pin_A && TurboActivate[i] && Blinking ) controllerData.squareOn = false;
+        if ( i==pin_B && TurboActivate[i] && Blinking ) controllerData.crossOn = false;
+
+        if ( i==pin_SWITCH_L && TurboActivate[i] && Blinking ) controllerData.l1On = false;
+        if ( i==pin_SWITCH_ZL && TurboActivate[i] && Blinking ) controllerData.l2On = false;
+        if ( i==pin_SWITCH_R && TurboActivate[i] && Blinking ) controllerData.r1On = false;        
+        if ( i==pin_SWITCH_ZR && TurboActivate[i] && Blinking ) controllerData.r2On = false;
+
+     
+              
+      }
+      
+    }
+
 
 
 
   if ( Recording )
   {
 
-//Deactivating Light effect
-/*
-          CountDownNoPushEffect=0;  //reseting time.
-          RotateSpeed=RotateSpeedInitial; 
-          RunEffectOn=true;
 
-//Blinking leds
 
-             BlinkTime+=(millis()-LastTime);
-             if ( BlinkTime > 1000000/2 )
-             {
-                Serial.print(BlinkTime);
-                Serial.print(" ");
-                Serial.print(LastTime);
-                Serial.print(" ");
-                Serial.println(millis());
-                
-                LastTime=millis();
-                BlinkTime=0;
-                for (int i=0;i<12;++i)
-                {
-                  if (digitalRead(myLedPins[i]) == LOW )
-                   digitalWrite(myLedPins[i],HIGH);
-                  else
-                   digitalWrite(myLedPins[i],LOW);
-                }
-             }
-*/
-/*
-            NoButtonPressed=SameButtonsPressed( controllerData);    
-            boolean ChangeButton=false;
-            for (int i = 0; i < sizeof controllerData; i++)
-            {             
-              if ((char)*PointerToDataOld++ != (char)*PointerToDataNew++) 
-              {
-                ChangeButton=true;
-              }
-            }
-*/
+  controllerData.MinusOn = !digitalRead(pin_MinusOn);
+  controllerData.PlusOn = !digitalRead(pin_PlusOn);
+  controllerData.HomeOn = !digitalRead(pin_HomeOn);
+
 
             if (!SameButtonsPressed( controllerData))  //Register new button pressed
             {
@@ -896,10 +1098,7 @@ Serial.println("]");
 #endif
 
 
-/*              
-                const byte *MyPointerToDataHist = (byte*) &RecordingSteps[Recording].data;              
-                MyPointerToDataHist=PointerToDataNew;
-*/
+
 
                 if (RecordingStep==0) //first step
                 {
@@ -921,7 +1120,7 @@ Serial.println("]");
     }
 
   
-
+  
 
   SaveButtonsPressed(controllerData);    
   return controllerData;
@@ -955,27 +1154,6 @@ void ControlLightEffect()
   boolean buttonPushed=false;
 
   buttonPushed=AnyButtonPressed();
-
-/*  
-  for (int i=pin_X; i<=pin_B ; ++i)
-    if (!digitalRead(i)) 
-      buttonPushed=true;
-
-
-  for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
-    if (!digitalRead(i)) 
-      buttonPushed=true;
-
-
-  for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
-    if (!digitalRead(i)) 
-      buttonPushed=true;
-
-
-  for (int i=LeftStick_Top_pin; i<=LeftStick_Left_pin ; ++i)
-    if (!digitalRead(i)) 
-      buttonPushed=true;
-*/
 
   currentTime=millis();
 
@@ -1040,20 +1218,31 @@ boolean AnyButtonPressed()
     for (int i=pin_X; i<=pin_B ; ++i)
     if (!digitalRead(i)) 
       buttonPushed=true;
+    else
+       TurboKeep[i]=false;  // Turn off trigger of button.
 
 
   for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
     if (!digitalRead(i)) 
       buttonPushed=true;
+    else
+      TurboKeep[i]=false;  // Turn off trigger of button.
 
-
+/*
   for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
     if (!digitalRead(i)) 
       buttonPushed=true;
-
+*/
 
   for (int i=LeftStick_Top_pin; i<=LeftStick_Left_pin ; ++i)
     if (!digitalRead(i)) 
+      buttonPushed=true;
+
+  for (int i=pin_MinusOn; i<=pin_HomeOn ; ++i)
+    if (!digitalRead(i) && digitalRead(pin_TILT))  
+      buttonPushed=true;
+
+   if (!digitalRead(pin_SpecialReplicateButton))
       buttonPushed=true;
 
   return buttonPushed;
@@ -1080,11 +1269,11 @@ boolean SameButtonsPressed(dataForController_t controllerData)
   if ( controllerData.dpadUpOn != LastRecordingData.dpadUpOn ) Same=false;
   if ( controllerData.dpadRightOn != LastRecordingData.dpadRightOn ) Same=false;
   if ( controllerData.dpadDownOn != LastRecordingData.dpadDownOn ) Same=false;
-/*  
+  
   if ( controllerData.MinusOn != LastRecordingData.MinusOn ) Same=false;
   if ( controllerData.PlusOn != LastRecordingData.PlusOn ) Same=false;
   if ( controllerData.HomeOn != LastRecordingData.HomeOn ) Same=false;
-*/
+
   if ( controllerData.leftStickX != LastRecordingData.leftStickX ) Same=false;
   if ( controllerData.leftStickY != LastRecordingData.leftStickY ) Same=false;
   if ( controllerData.rightStickX != LastRecordingData.rightStickX ) Same=false;
@@ -1113,7 +1302,6 @@ void SaveButtonsPressed(dataForController_t controllerData)
   LastRecordingData.dpadLeftOn = controllerData.dpadLeftOn;
   LastRecordingData.dpadUpOn = controllerData.dpadUpOn;
   LastRecordingData.dpadRightOn = controllerData.dpadRightOn;
-  LastRecordingData.dpadDownOn = controllerData.dpadDownOn;
   LastRecordingData.MinusOn = controllerData.MinusOn;
   LastRecordingData.PlusOn = controllerData.PlusOn;
   LastRecordingData.HomeOn = controllerData.HomeOn;
@@ -1133,72 +1321,51 @@ void NormalLedEffect()  // Normal leds
 //  if ( Playing ) return;
   
   for (int i=pin_X; i<=pin_B ; ++i)
-    if (!digitalRead(i)) 
+    if (!digitalRead(i) || TurboActivate[i]) 
       digitalWrite( i + (Led_pin_X-pin_X) , HIGH);
     else
       digitalWrite( i + (Led_pin_X-pin_X) , LOW);
 
 
   for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
-    if (!digitalRead(i)) 
+    if (!digitalRead(i) || TurboActivate[i] ) 
       digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , HIGH);
     else
       digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , LOW);
 
-
+/*
   for (int i=pin_SWITCH_L; i<=pin_SWITCH_ZR ; ++i)
     if (!digitalRead(i)) 
       digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , HIGH);
     else
       digitalWrite( i + (Led_pin_SWITCH_L-pin_SWITCH_L) , LOW);
-
+*/
 
   for (int i=LeftStick_Top_pin; i<=LeftStick_Left_pin ; ++i)
     if (!digitalRead(i)) 
       digitalWrite( i + (Led_LeftStick_Top_pin-LeftStick_Top_pin) , HIGH);
     else
       digitalWrite( i + (Led_LeftStick_Top_pin-LeftStick_Top_pin) , LOW);
+
+
+
+   if (!digitalRead(pin_SpecialReplicateButton)) //IDJ on
+    digitalWrite( Led_pin_B , HIGH);  // If IDJ pressed, led pin_B on
+
+
+      
   }
 
 
 void WriteLedsFromPlaying(dataForController_t controllerData)
 {
-/*  
-                    controllerData.triangleOn = RecordingSteps[PlayingStep].data.triangleOn;
-                    controllerData.circleOn = RecordingSteps[PlayingStep].data.circleOn;
-                    controllerData.squareOn = RecordingSteps[PlayingStep].data.squareOn;
-                    controllerData.crossOn = RecordingSteps[PlayingStep].data.crossOn;
-                    controllerData.l1On = RecordingSteps[PlayingStep].data.l1On;
-                    controllerData.l2On = RecordingSteps[PlayingStep].data.l2On;
-                    controllerData.l3On = RecordingSteps[PlayingStep].data.l3On;
-                    controllerData.r1On = RecordingSteps[PlayingStep].data.r1On;
-                    controllerData.r2On = RecordingSteps[PlayingStep].data.r2On;
-                    controllerData.r3On = RecordingSteps[PlayingStep].data.r3On;
-                    controllerData.dpadLeftOn = RecordingSteps[PlayingStep].data.dpadLeftOn;
-                    controllerData.dpadUpOn = RecordingSteps[PlayingStep].data.dpadUpOn;
-                    controllerData.dpadRightOn = RecordingSteps[PlayingStep].data.dpadRightOn;
-                    controllerData.dpadDownOn = RecordingSteps[PlayingStep].data.dpadDownOn;  
-                    controllerData.MinusOn = RecordingSteps[PlayingStep].data.MinusOn;
-                    controllerData.PlusOn = RecordingSteps[PlayingStep].data.PlusOn;
-                    controllerData.HomeOn = RecordingSteps[PlayingStep].data.HomeOn;
 
-                    controllerData.leftStickX = RecordingSteps[PlayingStep].data.leftStickX;
-                    controllerData.leftStickY = RecordingSteps[PlayingStep].data.leftStickY;
-                    controllerData.rightStickX = RecordingSteps[PlayingStep].data.rightStickX;
-                    controllerData.rightStickY = RecordingSteps[PlayingStep].data.rightStickY;
-*/
 
                     if ( controllerData.triangleOn )  digitalWrite(Led_pin_X,HIGH);      else                   digitalWrite(Led_pin_X,LOW);  
                     if ( controllerData.circleOn )    digitalWrite(Led_pin_Y,HIGH);      else                   digitalWrite(Led_pin_Y,LOW);  
                     if ( controllerData.squareOn )    digitalWrite(Led_pin_A,HIGH);      else                   digitalWrite(Led_pin_A,LOW);  
                     if ( controllerData.crossOn )     digitalWrite(Led_pin_B,HIGH);      else                   digitalWrite(Led_pin_B,LOW);  
 
-/*
-                    if ( controllerData.dpadUpOn )  digitalWrite(Led_pin_X,LOW);      else                   digitalWrite(Led_pin_X,HIGH);  
-                    if ( controllerData.dpadDownOn )    digitalWrite(Led_pin_Y,LOW);      else                   digitalWrite(Led_pin_Y,HIGH);  
-                    if ( controllerData.dpadLeftOn )    digitalWrite(Led_pin_A,LOW);      else                   digitalWrite(Led_pin_A,HIGH);  
-                    if ( controllerData.dpadRightOn )     digitalWrite(Led_pin_B,LOW);      else                   digitalWrite(Led_pin_B,HIGH);  
-*/
 
 
 
@@ -1216,10 +1383,6 @@ void WriteLedsFromPlaying(dataForController_t controllerData)
                     if (controllerData.leftStickY< 128 ) digitalWrite(Led_LeftStick_Top_pin,HIGH); else digitalWrite(Led_LeftStick_Top_pin,LOW);
                     if (controllerData.leftStickY> 128 ) digitalWrite(Led_LeftStick_Down_pin,HIGH); else digitalWrite(Led_LeftStick_Down_pin,LOW);
 
-int Led_LeftStick_Top_pin   =  48  ;
-int Led_LeftStick_Right_pin =  49  ;
-int Led_LeftStick_Down_pin  =  50  ;
-int Led_LeftStick_Left_pin  =  51  ;
-                    
+                 
                     
 }
